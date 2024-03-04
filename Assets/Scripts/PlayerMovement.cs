@@ -20,10 +20,9 @@ public class PlayerMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         // Rotation towards the mouse
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector2 direction = new Vector2(
+        Vector2 direction = new(
             mousePosition.x - transform.position.x,
             mousePosition.y - transform.position.y
         );
