@@ -7,9 +7,17 @@ public class SmoothPlayerFollow : MonoBehaviour
 
     [SerializeField]
     [Range(0.01f, 1.0f)]
+    [Tooltip("How smooth the camera follows the player. Lower values are stiffer, higher values are smoother.")]
     private float smoothSpeed = 0.125f;
 
-    [SerializeField] private Vector3 offset = new(0, 0, -10);
+    [SerializeField]
+    [Range(0.01f, 10.0f)]
+    [Tooltip("How much the mouse affects the camera movement. Lower values are less affected, higher values are more affected.")]
+    private float mouseOffsetMultiplier = 5.0f;
+
+    [SerializeField]
+    [Tooltip("The offset of the camera from the player.")]
+    private Vector3 offset = new(0, 0, -10);
 
     private Vector3 velocity = Vector3.zero;
 
@@ -23,7 +31,8 @@ public class SmoothPlayerFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 desiredPosition = target.position + offset;
+        Vector3 mouseOffset = Camera.main.ScreenToWorldPoint(Input.mousePosition).normalized * mouseOffsetMultiplier;
+        Vector3 desiredPosition = target.position + offset + mouseOffset;
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
         transform.position = smoothedPosition;
     }

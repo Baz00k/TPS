@@ -140,6 +140,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1252828072}
+    - target: {fileID: 215465770079138279, guid: 46c8318b128564dda8aca6bab9ae7b5f, type: 3}
+      propertyPath: mouseOffsetMultiplier
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1415464016519774432, guid: 46c8318b128564dda8aca6bab9ae7b5f, type: 3}
       propertyPath: m_Name
       value: PlayerCamera
