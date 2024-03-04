@@ -1,14 +1,13 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
 public class SmoothPlayerFollow : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-
     [SerializeField]
     [Range(0.01f, 1.0f)]
     [Tooltip("How smooth the camera follows the player. Lower values are stiffer, higher values are smoother.")]
-    private float smoothSpeed = 0.125f;
+    private float smoothSpeed = 0.15f;
 
     [SerializeField]
     [Range(0.01f, 10.0f)]
@@ -19,21 +18,43 @@ public class SmoothPlayerFollow : MonoBehaviour
     [Tooltip("The offset of the camera from the player.")]
     private Vector3 offset = new(0, 0, -10);
 
-    private Vector3 velocity = Vector3.zero;
+    [SerializeField]
+    [Tooltip("How often the camera should check for the player's existence.")]
+    private float findPlayerInterval = 0.1f;
 
-    private void Start()
-    {
-        if (target == null)
-        {
-            Debug.LogError("Target is not set in SmoothPlayerFollow script");
-        }
-    }
+    private Transform target;
+    private Vector3 velocity = Vector3.zero;
+    private Coroutine findPlayerCoroutine;
 
     private void FixedUpdate()
     {
+        if (target == null)
+        {
+            findPlayerCoroutine ??= StartCoroutine(FindPlayerCoroutine());
+
+            // if the player doesn't exist, don't try to follow it
+            return;
+        }
+
         Vector3 mouseOffset = Camera.main.ScreenToWorldPoint(Input.mousePosition).normalized * mouseOffsetMultiplier;
         Vector3 desiredPosition = target.position + offset + mouseOffset;
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
         transform.position = smoothedPosition;
+    }
+
+    private IEnumerator FindPlayerCoroutine()
+    {
+        while (target == null)
+        {
+            yield return new WaitForSeconds(findPlayerInterval);
+
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+            if (player != null)
+            {
+                target = player.transform;
+                findPlayerCoroutine = null;
+            }
+        }
     }
 }

@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &1252828072 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3670032521443383387, guid: a5c4b79cd2b99436395d9b8bc246adc2, type: 3}
-  m_PrefabInstance: {fileID: 6372492907817795588}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &892736643616217390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -136,14 +131,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 215465770079138279, guid: 46c8318b128564dda8aca6bab9ae7b5f, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1252828072}
-    - target: {fileID: 215465770079138279, guid: 46c8318b128564dda8aca6bab9ae7b5f, type: 3}
-      propertyPath: mouseOffsetMultiplier
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 1415464016519774432, guid: 46c8318b128564dda8aca6bab9ae7b5f, type: 3}
       propertyPath: m_Name
       value: PlayerCamera
