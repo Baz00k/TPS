@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dea401d9aa174056a16fa851c13fb6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  smoothSpeed: 0.125
+  smoothSpeed: 0.2
+  mouseOffsetMultiplier: 5
   offset: {x: 0, y: 0, z: -100}
+  maxDistance: 10
+  findPlayerInterval: 0.1
