@@ -1,23 +1,16 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class BulletController : MonoBehaviour
 {
-    private float speed;
-    private float range;
-    private float damage;
+    private float speed = 10f;
+    private float range = 10f;
+    private float damage = 10f;
 
-    public void SetSpeed(float speed)
+    public void SetStats(float speed, float range, float damage)
     {
         this.speed = speed;
-    }
-
-    public void SetRange(float range)
-    {
         this.range = range;
-    }
-
-    public void SetDamage(float damage)
-    {
         this.damage = damage;
     }
 

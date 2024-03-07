@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class WeaponController : MonoBehaviour
+public class ProjectileWeaponController : BaseInventoryItem
 {
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject projectilePrefab;
 
     [SerializeField]
     [Range(0.5f, 10f)]
@@ -10,7 +10,7 @@ public class WeaponController : MonoBehaviour
 
     [SerializeField]
     [Range(1f, 100f)]
-    private float bulletSpeed = 10f;
+    private float projectileSpeed = 10f;
 
     [SerializeField]
     [Range(1f, 100f)]
@@ -20,19 +20,19 @@ public class WeaponController : MonoBehaviour
     [Range(1f, 100f)]
     private float damage = 10f;
 
-    private float nextFireTime = 0f;
+    private float fireRateTimer = 0f;
 
-    public void Fire()
+    public override void Use(bool _) => Fire();
+
+    private void Fire()
     {
-        if (Time.time > nextFireTime)
+        if (Time.time > fireRateTimer)
         {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            GameObject bullet = Instantiate(projectilePrefab, transform.position, transform.rotation);
             BulletController bulletController = bullet.GetComponent<BulletController>();
-            bulletController.SetSpeed(bulletSpeed);
-            bulletController.SetRange(range);
-            bulletController.SetDamage(damage);
+            bulletController.SetStats(projectileSpeed, range, damage);
 
-            nextFireTime = Time.time + 1f / fireRate;
+            fireRateTimer = Time.time + 1f / fireRate;
         }
     }
 }
