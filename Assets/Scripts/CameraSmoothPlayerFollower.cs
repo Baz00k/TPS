@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Camera))]
-public class SmoothPlayerFollow : MonoBehaviour
+public class CameraSmoothPlayerFollower : MonoBehaviour
 {
     [SerializeField]
     [Range(0.01f, 1.0f)]
