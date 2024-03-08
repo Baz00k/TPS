@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] enemyPrefabs;
@@ -58,8 +58,5 @@ public class Enemy : MonoBehaviour
         Vector2 directionToPlayer = (playerPrefab.transform.position - enemy.transform.position).normalized;
         enemy.transform.up = directionToPlayer;
 
-        // Dodaj tag "Enemy" i komponent Collider do wroga
-        enemy.tag = "Enemy";
-        enemy.AddComponent<BoxCollider>(); // lub inny odpowiedni Collider w zależności od potrzeb
     }
 }
