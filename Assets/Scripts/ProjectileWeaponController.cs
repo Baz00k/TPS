@@ -3,6 +3,7 @@ using UnityEngine;
 public class ProjectileWeaponController : BaseInventoryItem
 {
     [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform firePoint;
 
     [SerializeField]
     [Range(0.5f, 10f)]
@@ -28,7 +29,7 @@ public class ProjectileWeaponController : BaseInventoryItem
     {
         if (Time.time > fireRateTimer)
         {
-            GameObject bullet = Instantiate(projectilePrefab, transform.position, transform.rotation);
+            GameObject bullet = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
             BulletController bulletController = bullet.GetComponent<BulletController>();
             bulletController.SetStats(projectileSpeed, range, damage);
 
