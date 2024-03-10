@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Camera))]
-public class SmoothPlayerFollow : MonoBehaviour
+public class CameraSmoothPlayerFollower : MonoBehaviour
 {
     [SerializeField]
     [Range(0.01f, 1.0f)]
@@ -36,7 +37,7 @@ public class SmoothPlayerFollow : MonoBehaviour
             return;
         }
 
-        Vector3 mouseOffset = Camera.main.ScreenToWorldPoint(Input.mousePosition).normalized * mouseOffsetMultiplier;
+        Vector3 mouseOffset = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()).normalized * mouseOffsetMultiplier;
         Vector3 desiredPosition = target.position + offset + mouseOffset;
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
         transform.position = smoothedPosition;
