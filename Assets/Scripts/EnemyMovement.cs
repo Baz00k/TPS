@@ -21,15 +21,11 @@ public class EnemyMovement : MonoBehaviour
         {
             agent.SetDestination(target.transform.position);
 
-            // Dodaj warunek sprawdzający, czy agent nadal porusza się do celu
+            // Check if the agent is moving and rotate it towards the movement direction
             if (!agent.pathPending && agent.remainingDistance > 0.1f)
             {
                 RotateTowardsMovementDirection();
             }
-        }
-        else
-        {
-            Debug.LogError("Player not found.");
         }
     }
 
@@ -45,12 +41,12 @@ public class EnemyMovement : MonoBehaviour
 
     void RotateTowardsMovementDirection()
     {
-        Vector3 lookDirection = (agent.steeringTarget - transform.position).normalized;
-        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Vector3 direction = (agent.steeringTarget - transform.position).normalized;
+        direction.z = 0f;
 
-        // Dodaj poniższą linijkę, aby natychmiastowo zastosować obroty
-        agent.updateRotation = false;
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, targetAngle - 90f);
+
         agent.updateRotation = true;
     }
 }
