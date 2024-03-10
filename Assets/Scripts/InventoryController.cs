@@ -28,6 +28,8 @@ public class InventoryController : MonoBehaviour
 
     private void Update()
     {
+        // TODO: Rotate the item towards the mouse
+
         if (!isUsingItem || activeItemInstance == null) return;
 
         activeItemInstance.GetComponent<BaseInventoryItem>().Use(false);
