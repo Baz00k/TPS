@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("SpawnEnemies", 0f, spawnInterval);
+        InvokeRepeating(nameof(SpawnEnemies), 0f, spawnInterval);
     }
 
     void SpawnEnemies()
