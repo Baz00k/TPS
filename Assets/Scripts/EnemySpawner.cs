@@ -6,12 +6,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject[] enemyPrefabs;
 
-    [SerializeField]
-    private GameObject playerPrefab;
-
-    public float spawnInterval = 2f;
-    public float spawnRectangleWidth = 20f;
-    public float spawnRectangleHeight = 12f;
+    [SerializeField] private float spawnInterval = 2f;
+    [SerializeField] private float spawnRectangleWidth = 20f;
+    [SerializeField] private float spawnRectangleHeight = 12f;
 
     void Start()
     {
@@ -23,40 +20,32 @@ public class EnemySpawner : MonoBehaviour
         float randomX;
         float randomY;
 
-        float randomEdge = Random.Range(0f, 1f);
-
-        if (randomEdge < 0.25f) // lewa krawędź
+        // Choose a random position on the spawn rectangle
+        if (Random.Range(0, 2) == 0)
         {
-            randomX = playerPrefab.transform.position.x - spawnRectangleWidth / 2f;
-            randomY = Random.Range(playerPrefab.transform.position.y - spawnRectangleHeight / 2f, playerPrefab.transform.position.y + spawnRectangleHeight / 2f);
+            randomX = Random.Range(-spawnRectangleWidth / 2, spawnRectangleWidth / 2);
+            randomY = Random.Range(-spawnRectangleHeight / 2, spawnRectangleHeight / 2);
         }
-        else if (randomEdge < 0.5f) // górna krawędź
+        else
         {
-            randomX = Random.Range(playerPrefab.transform.position.x - spawnRectangleWidth / 2f, playerPrefab.transform.position.x + spawnRectangleWidth / 2f);
-            randomY = playerPrefab.transform.position.y + spawnRectangleHeight / 2f;
-        }
-        else if (randomEdge < 0.75f) // prawa krawędź
-        {
-            randomX = playerPrefab.transform.position.x + spawnRectangleWidth / 2f;
-            randomY = Random.Range(playerPrefab.transform.position.y - spawnRectangleHeight / 2f, playerPrefab.transform.position.y + spawnRectangleHeight / 2f);
-        }
-        else // dolna krawędź
-        {
-            randomX = Random.Range(playerPrefab.transform.position.x - spawnRectangleWidth / 2f, playerPrefab.transform.position.x + spawnRectangleWidth / 2f);
-            randomY = playerPrefab.transform.position.y - spawnRectangleHeight / 2f;
+            if (Random.Range(0, 2) == 0)
+            {
+                randomX = Random.Range(-spawnRectangleWidth / 2, spawnRectangleWidth / 2);
+                randomY = spawnRectangleHeight / 2;
+            }
+            else
+            {
+                randomX = spawnRectangleWidth / 2;
+                randomY = Random.Range(-spawnRectangleHeight / 2, spawnRectangleHeight / 2);
+            }
         }
 
         Vector3 randomPosition = new Vector3(randomX, randomY, 0f);
 
-        // Losowy wybór prefabu wroga
+        // Choose a random enemy prefab
         GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
 
-        // Tworzenie wroga na losowej pozycji
+        // Spawn the enemy
         GameObject enemy = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
-
-        // Obróć wroga w kierunku gracza 
-        Vector2 directionToPlayer = (playerPrefab.transform.position - enemy.transform.position).normalized;
-        enemy.transform.up = directionToPlayer;
-
     }
 }
