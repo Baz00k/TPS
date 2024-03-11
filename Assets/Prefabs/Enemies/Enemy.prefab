@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 6937494308380470130}
   - component: {fileID: 2635570459358513131}
   - component: {fileID: 6186311452221819230}
+  - component: {fileID: 2303422956199495977}
   - component: {fileID: 1235877105731463606}
   - component: {fileID: 8694291220910569502}
-  - component: {fileID: 3500606370745032079}
   - component: {fileID: 4662948746803737646}
   m_Layer: 0
   m_Name: Enemy
@@ -155,6 +155,18 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2303422956199495977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153994652955984481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e39f6090724e4a4a8aadeb042afa2bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1235877105731463606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,18 +197,6 @@ MonoBehaviour:
   characterHand: {fileID: 0}
   inventorySize: 1
   startingItems: []
---- !u!114 &3500606370745032079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4153994652955984481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8238096fdcfd41119187a1a907c6511, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4662948746803737646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50bbde51fa7c4ef3bf160d664f653c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerTag: Player
   findPlayerInterval: 1
   targetDistance: 4
 --- !u!1 &5465694133554084769

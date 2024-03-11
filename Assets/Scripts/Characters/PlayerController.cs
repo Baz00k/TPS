@@ -4,9 +4,18 @@ using UnityEngine.InputSystem;
 namespace TPS.Characters
 {
     [RequireComponent(typeof(PlayerInput))]
+    [RequireComponent(typeof(CharacterMovement))]
     public class PlayerController : BaseCharacterController
     {
         private bool isUsingItem;
+        private CharacterMovement Movement { get; set; }
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            Movement = GetComponent<CharacterMovement>();
+        }
 
         public void OnMove(InputValue value)
         {
