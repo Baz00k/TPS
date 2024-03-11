@@ -47,8 +47,6 @@ public class CameraSmoothPlayerFollower : MonoBehaviour
     {
         while (target == null)
         {
-            yield return new WaitForSeconds(findPlayerInterval);
-
             GameObject player = GameObject.FindGameObjectWithTag("Player");
 
             if (player != null)
@@ -56,6 +54,8 @@ public class CameraSmoothPlayerFollower : MonoBehaviour
                 target = player.transform;
                 findPlayerCoroutine = null;
             }
+
+            yield return new WaitForSeconds(findPlayerInterval);
         }
     }
 }
