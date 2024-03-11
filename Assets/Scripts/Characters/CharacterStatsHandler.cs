@@ -8,6 +8,15 @@ namespace TPS.Characters
         [Tooltip("The default stats of the character")]
         private CharacterStats baseStats;
 
+        public int maxHealth = 100;
+	    public int currentHealth;
+	    public HealthBar healthBar;
+
+        void Start()
+        {
+		    currentHealth = maxHealth;
+		    healthBar.SetMaxHealth(maxHealth);
+        }
         public CharacterStats CurrentStats { get; private set; }
 
         private void Awake()
@@ -24,5 +33,12 @@ namespace TPS.Characters
         {
             CurrentStats = baseStats;
         }
+
+        public void TakeDamage(int damage)
+	    {
+		    currentHealth -= damage;
+
+		    healthBar.SetHealth(currentHealth);
+	    }
     }
 }
