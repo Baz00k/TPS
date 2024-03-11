@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 8743586696697004501}
   - component: {fileID: 2973845363148618921}
   - component: {fileID: 9062215355656017825}
-  - component: {fileID: 4994985422877805521}
-  - component: {fileID: 6547025299718147857}
+  - component: {fileID: 5373218711655818193}
+  - component: {fileID: 2435925414727279918}
+  - component: {fileID: 8282933634720589157}
+  - component: {fileID: 5986168353238493247}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -142,11 +144,11 @@ MonoBehaviour:
     m_ActionId: 6b6872e3-6435-4b2a-8a7b-9c31cd3e5d69
     m_ActionName: Player/InventoryPreviousItem[/Mouse/backButton]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &4994985422877805521
+--- !u!114 &5373218711655818193
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,11 +157,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1024776658894206647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 469286de437f14a48b19eb7e56214dc3, type: 3}
+  m_Script: {fileID: 11500000, guid: 330e67765eaaa4560a8286c3bc7168b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
---- !u!114 &6547025299718147857
+  baseStats:
+    MaxHealth: 100
+    MovementSpeed: 5
+--- !u!114 &2435925414727279918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,14 +172,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 1024776658894206647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2089d6d91c5fc421aa917419a37202bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b2566c2d29f345ff8bc747ebd6a0060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  hand: {fileID: 5380970113130316817}
+  characterHand: {fileID: 5380970113130316817}
+  inventorySize: 3
+  startingItems:
+  - {fileID: -2528531098089343756, guid: e790a1f690adc46a3a92a176cec792c7, type: 3}
+--- !u!114 &8282933634720589157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024776658894206647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8238096fdcfd41119187a1a907c6511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5986168353238493247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024776658894206647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92e7c79e6b8746d39fbf6e322514959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2093414784460977065
 GameObject:
   m_ObjectHideFlags: 0

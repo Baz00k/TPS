@@ -43,16 +43,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 757679312379206942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16256d99dd3764dda878a39d5b494010, type: 3}
+  m_Script: {fileID: 11500000, guid: 2351d7dde61e0463aaa6cc2bb0f9f863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Rifle
-  description: 
+  description: Just a basic rifle
   icon: {fileID: 0}
   projectilePrefab: {fileID: 7287932448995512563, guid: 87972b595f1434410a0277ac8c3eb60c, type: 3}
   firePoint: {fileID: 1744880809905627962}
-  fireRate: 8
-  projectileSpeed: 25
+  fireRate: 7
+  projectileSpeed: 15
   range: 12
   damage: 10
 --- !u!1 &3796851717885767521

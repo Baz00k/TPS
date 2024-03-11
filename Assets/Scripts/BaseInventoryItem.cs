@@ -6,5 +6,5 @@ public abstract class BaseInventoryItem : MonoBehaviour
     [TextArea(3, 10)] public string description;
     public Sprite icon;
 
-    public abstract void Use(bool firstTime);
+    public abstract void Use();
 }
