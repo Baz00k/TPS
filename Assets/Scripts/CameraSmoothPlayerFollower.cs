@@ -37,7 +37,7 @@ public class CameraSmoothPlayerFollower : MonoBehaviour
             return;
         }
 
-        Vector3 mouseOffset = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()).normalized * mouseOffsetMultiplier;
+        Vector3 mouseOffset = (Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - target.position).normalized * mouseOffsetMultiplier;
         Vector3 desiredPosition = target.position + offset + mouseOffset;
         Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
         transform.position = smoothedPosition;
