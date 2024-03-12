@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace TPS.Characters
 {
@@ -7,17 +8,11 @@ namespace TPS.Characters
         [SerializeField]
         [Tooltip("The default stats of the character")]
         private CharacterStats baseStats;
-
-        public int maxHealth = 100;
-	    public int currentHealth;
-	    public HealthBar healthBar;
-
-        void Start()
-        {
-		    currentHealth = maxHealth;
-		    healthBar.SetMaxHealth(maxHealth);
-        }
         public CharacterStats CurrentStats { get; private set; }
+
+        [Header("Events")]
+        [SerializeField] private UnityEvent<CharacterStats> onStatsChanged;
+        public UnityEvent<CharacterStats> OnStatsChanged => onStatsChanged;
 
         private void Awake()
         {
@@ -27,18 +22,20 @@ namespace TPS.Characters
         public void ApplyStats(CharacterStats newStats)
         {
             CurrentStats = newStats;
+            LimitStats();
+            onStatsChanged.Invoke(CurrentStats);
         }
 
         public void ResetStats()
         {
             CurrentStats = baseStats;
+            onStatsChanged.Invoke(CurrentStats);
         }
 
-        public void TakeDamage(int damage)
-	    {
-		    currentHealth -= damage;
-
-		    healthBar.SetHealth(currentHealth);
-	    }
+        private void LimitStats()
+        {
+            CurrentStats.MaxHealth = Mathf.Clamp(CurrentStats.MaxHealth, 1, CurrentStats.MaxHealth);
+            CurrentStats.MovementSpeed = Mathf.Max(0, CurrentStats.MovementSpeed);
+        }
     }
 }
