@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2973845363148618921}
   - component: {fileID: 9062215355656017825}
   - component: {fileID: 5373218711655818193}
+  - component: {fileID: 3759616540778005625}
   - component: {fileID: 2435925414727279918}
   - component: {fileID: 8282933634720589157}
   - component: {fileID: 5986168353238493247}
@@ -163,6 +164,33 @@ MonoBehaviour:
   baseStats:
     MaxHealth: 100
     MovementSpeed: 5
+  onStatsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3759616540778005625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024776658894206647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6155b15e731f247eb9fba8cdc7d2a907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+  onHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2435925414727279918
 MonoBehaviour:
   m_ObjectHideFlags: 0

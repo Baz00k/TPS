@@ -16,7 +16,7 @@ namespace TPS.Characters
 
         private void Awake()
         {
-            CurrentStats = baseStats;
+            ApplyStats(baseStats);
         }
 
         public void ApplyStats(CharacterStats newStats)
