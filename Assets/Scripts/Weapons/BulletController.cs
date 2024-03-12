@@ -1,14 +1,32 @@
 using UnityEngine;
+using TPS.Characters;
 
 
 namespace TPS.Weapons
 {
     [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof(Rigidbody2D))]
     public class BulletController : MonoBehaviour
     {
         private float speed = 10f;
         private float range = 10f;
         private float damage = 10f;
+
+        private Rigidbody2D rb;
+
+        private void Awake()
+        {
+            rb = GetComponent<Rigidbody2D>();
+
+            rb.gravityScale = 0;
+            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        }
+
+        private void Start()
+        {
+            rb.velocity = transform.up * speed;
+            Destroy(gameObject, range / speed);
+        }
 
         public void SetStats(float speed, float range, float damage)
         {
@@ -17,21 +35,14 @@ namespace TPS.Weapons
             this.damage = damage;
         }
 
-        private void FixedUpdate()
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            transform.Translate(speed * Time.fixedDeltaTime * Vector2.up);
-            range -= speed * Time.fixedDeltaTime;
-
-            if (range <= 0)
+            if (other.TryGetComponent<CharacterHealthHandler>(out var healthHandler))
             {
-                Destroy(gameObject);
+                healthHandler.Damage(damage);
             }
-        }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            Debug.Log("Bullet hit " + other.name);
+            Destroy(gameObject);
         }
-
     }
 }
