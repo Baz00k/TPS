@@ -36,6 +36,8 @@ namespace TPS.Characters
             agent.updateUpAxis = false;
 
             rotateAgent = new RotateAgentSmoothly(agent, GetComponent<AgentOverride2d>(), 180f);
+
+            HealthHandler.OnDeath.AddListener(Die);
         }
 
         protected void Start()
@@ -56,6 +58,12 @@ namespace TPS.Characters
 
             agent.SetDestination(target.position);
             rotateAgent.UpdateAgent();
+        }
+
+
+        private void Die()
+        {
+            Destroy(gameObject);
         }
 
         private IEnumerator FindPlayerCoroutine()
