@@ -33,9 +33,6 @@ namespace TPS.UI
 
             statsHandler = entityToWatch.GetComponent<CharacterStatsHandler>();
             statsHandler.OnStatsChanged.AddListener(SetMaxHealth);
-
-            // Manually set the max health for the first time because the event is invoked before the HealthBar is initialized
-            SetMaxHealth(statsHandler.CurrentStats);
         }
 
         public void SetMaxHealth(CharacterStats characterStats)
