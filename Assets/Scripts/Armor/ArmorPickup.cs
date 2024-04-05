@@ -6,13 +6,28 @@ using UnityEngine.InputSystem;
 public class ArmorPickup : MonoBehaviour
 {
     public ArmorItem armorItem;
+    private bool fKeyPressed = false;
 
     void Update()
     {
-        // Sprawdź czy został naciśnięty przycisk F
+
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
+            fKeyPressed = true;
+            Debug.Log("Key F was pressed.");
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (fKeyPressed && other.CompareTag("Player"))
+        {
             Pickup();
+            Debug.Log("OnTriggerEnter");
+        }
+        else
+        {
+            Debug.Log("Player is not in range or F key was not pressed.");
         }
     }
 
@@ -20,5 +35,8 @@ public class ArmorPickup : MonoBehaviour
     {
         ArmorManager.Instance.Add(armorItem);
         Destroy(gameObject);
+        Debug.Log("Armor picked up.");
     }
 }
+
+

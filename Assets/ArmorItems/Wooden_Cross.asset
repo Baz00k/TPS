@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a2edeb105478046ae24ed4ebf834b5, type: 3}
   m_Name: Wooden_Cross
   m_EditorClassIdentifier: 
-  id: 0
-  armorName: 
-  value: 0
-  icon: {fileID: 0}
+  id: 1
+  armorName: Wooden Cross
+  value: 10
+  icon: {fileID: 21300000, guid: 25f08444168f7b845a67482259e83d19, type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a2edeb105478046ae24ed4ebf834b5, type: 3}
   m_Name: Golden_Cross
   m_EditorClassIdentifier: 
-  id: 0
-  armorName: 
-  value: 0
-  icon: {fileID: 0}
+  id: 3
+  armorName: Golden Cross
+  value: 30
+  icon: {fileID: 21300000, guid: ea212e7c7cbaae74a8c635af56475d42, type: 3}
