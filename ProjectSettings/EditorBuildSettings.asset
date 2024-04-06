@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 9174dd806983b6a4996fba7e41040366
   - enabled: 0
-    path: Assets/Scenes/Sandbox.unity
+    path: Assets/Scenes/Sandbox/Sandbox.unity
     guid: 398c9e330640e4767a59b3d8bdcaf439
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8a76fea6c0ed34e82a1a22ba4de60fa3, type: 2}
