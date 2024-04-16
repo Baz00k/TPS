@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1046485289521058750}
   - component: {fileID: 2793271931136831366}
   - component: {fileID: 52314892377993556}
+  - component: {fileID: 112237027824798966}
+  - component: {fileID: 657443100953064384}
   m_Layer: 0
   m_Name: Wooden_Cross
   m_TagString: Untagged
@@ -98,3 +100,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmorItem: {fileID: 11400000, guid: 5951dd8411144e64ba3b07ed6a3953ad, type: 2}
+--- !u!58 &112237027824798966
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741716906313686701}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &657443100953064384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741716906313686701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3485ab29313eb5440b56b62bfd3adb4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armorItem: {fileID: 11400000, guid: 5951dd8411144e64ba3b07ed6a3953ad, type: 2}

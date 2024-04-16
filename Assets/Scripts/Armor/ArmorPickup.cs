@@ -3,27 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Collider2D))]
 public class ArmorPickup : MonoBehaviour
 {
     public ArmorItem armorItem;
-    private bool fKeyPressed = false;
+    private bool isFKeyPressed = false;
 
     void Update()
     {
-
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
-            fKeyPressed = true;
+            isFKeyPressed = true;
             Debug.Log("Key F was pressed.");
+        }
+        else if (Keyboard.current.fKey.wasReleasedThisFrame)
+        {
+            isFKeyPressed = false;
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay2D(Collider2D other)
     {
-        if (fKeyPressed && other.CompareTag("Player"))
+        if (isFKeyPressed && other.CompareTag("Player"))
         {
             Pickup();
-            Debug.Log("OnTriggerEnter");
         }
         else
         {
@@ -33,10 +36,14 @@ public class ArmorPickup : MonoBehaviour
 
     void Pickup()
     {
+            ArmorManager.Instance.RemoveAll(armorItem);
+
+
+        // Dodajemy nowy armor
         ArmorManager.Instance.Add(armorItem);
+
+        // Niszczymy obecną zbroję
         Destroy(gameObject);
         Debug.Log("Armor picked up.");
     }
 }
-
-
