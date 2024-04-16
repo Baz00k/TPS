@@ -35,15 +35,28 @@ public class ArmorPickup : MonoBehaviour
     }
 
     void Pickup()
+{
+    ArmorManager.Instance.RemoveAll(armorItem);
+    ArmorManager.Instance.Add(armorItem);
+
+    // Powiadom HUD o zmianie zbroi
+    ArmorManager.Instance.NotifyArmorChanged(armorItem);
+
+    Destroy(gameObject);
+    Debug.Log("Armor picked up.");
+}
+
+    void UpdatePlayerHUD(ArmorItem armor)
     {
-            ArmorManager.Instance.RemoveAll(armorItem);
-
-
-        // Dodajemy nowy armor
-        ArmorManager.Instance.Add(armorItem);
-
-        // Niszczymy obecną zbroję
-        Destroy(gameObject);
-        Debug.Log("Armor picked up.");
+    PlayerArmorHUD playerHUD = FindObjectOfType<PlayerArmorHUD>();
+    if (playerHUD != null)
+    {
+        playerHUD.UpdateArmorHUD(armor);
     }
+    else
+    {
+        Debug.LogWarning("PlayerHUD not found in the scene.");
+    }
+}
+
 }

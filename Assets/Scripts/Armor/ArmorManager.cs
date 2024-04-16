@@ -14,6 +14,9 @@ public class ArmorManager : MonoBehaviour
     public Transform ArmorContent;
     public GameObject ArmorItem;
 
+    public delegate void ArmorChangedEvent(ArmorItem newArmor);
+    public event ArmorChangedEvent OnArmorChanged;
+
 
     // Dostęp do instancji singletona
     public static ArmorManager Instance
@@ -62,9 +65,10 @@ public class ArmorManager : MonoBehaviour
     // Funkcja usuwająca armatkę z listy
   public void RemoveAll(ArmorItem armor)
 {
-    Armors.Remove(armor);
+    Armors.RemoveAll(a => a.Equals(armor));
     Debug.Log("Usuwamy!!!!");
 }
+
 
     public void ListArmors()
     {
@@ -78,6 +82,11 @@ public class ArmorManager : MonoBehaviour
             armorIcon.sprite = armor.icon;
 
         }
+    }
+
+    public void NotifyArmorChanged(ArmorItem newArmor)
+    {
+    OnArmorChanged?.Invoke(newArmor);
     }
 
 }
