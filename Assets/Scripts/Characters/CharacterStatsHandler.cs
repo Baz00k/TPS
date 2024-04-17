@@ -8,7 +8,7 @@ namespace TPS.Characters
         [SerializeField]
         [Tooltip("The default stats of the character")]
         private CharacterStats baseStats;
-        public CharacterStats CurrentStats { get; private set; }
+        public CharacterStats CurrentStats { get; private set; } = new CharacterStats();
 
         [Header("Events")]
         [SerializeField] private UnityEvent<CharacterStats> onStatsChanged;
@@ -16,7 +16,7 @@ namespace TPS.Characters
 
         private void Awake()
         {
-            ApplyStats(baseStats);
+            ResetStats();
         }
 
         public void ApplyStats(CharacterStats newStats)
@@ -28,8 +28,7 @@ namespace TPS.Characters
 
         public void ResetStats()
         {
-            CurrentStats = baseStats;
-            onStatsChanged.Invoke(CurrentStats);
+            ApplyStats(baseStats);
         }
 
         private void LimitStats()
