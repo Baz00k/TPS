@@ -14,7 +14,6 @@ public class ArmorPickup : MonoBehaviour
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
             isFKeyPressed = true;
-            Debug.Log("Key F was pressed.");
         }
         else if (Keyboard.current.fKey.wasReleasedThisFrame)
         {
@@ -28,35 +27,36 @@ public class ArmorPickup : MonoBehaviour
         {
             Pickup();
         }
-        else
-        {
-            Debug.Log("Player is not in range or F key was not pressed.");
-        }
     }
 
     void Pickup()
-{
-    ArmorManager.Instance.RemoveAll(armorItem);
-    ArmorManager.Instance.Add(armorItem);
+    {
+        Debug.Log("Trying to remove armor: " + armorItem.armorName);
 
-    // Powiadom HUD o zmianie zbroi
-    ArmorManager.Instance.NotifyArmorChanged(armorItem);
+        // Usuń poprzednią zbroję z listy
+        ArmorManager.Instance.Remove(armorItem);
 
-    Destroy(gameObject);
-    Debug.Log("Armor picked up.");
-}
+        // Dodaj nową zbroję
+        ArmorManager.Instance.Add(armorItem);
+
+        // Powiadom HUD o zmianie zbroi
+        ArmorManager.Instance.NotifyArmorChanged(armorItem);
+
+        // Niszczymy obecną zbroję
+        Destroy(gameObject);
+        Debug.Log("Armor picked up.");
+    }
 
     void UpdatePlayerHUD(ArmorItem armor)
     {
-    PlayerArmorHUD playerHUD = FindObjectOfType<PlayerArmorHUD>();
-    if (playerHUD != null)
-    {
-        playerHUD.UpdateArmorHUD(armor);
+        PlayerArmorHUD playerHUD = FindObjectOfType<PlayerArmorHUD>();
+        if (playerHUD != null)
+        {
+            playerHUD.UpdateArmorHUD(armor);
+        }
+        else
+        {
+            Debug.LogWarning("PlayerHUD not found in the scene.");
+        }
     }
-    else
-    {
-        Debug.LogWarning("PlayerHUD not found in the scene.");
-    }
-}
-
 }

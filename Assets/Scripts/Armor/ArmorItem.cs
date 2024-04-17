@@ -8,24 +8,25 @@ public class ArmorItem : ScriptableObject
     public int id;
     public string armorName;
     public int value;
+    public float DMGResistance;
     public Sprite icon;
 
     public override bool Equals(object obj)
+{
+    if (obj == null || GetType() != obj.GetType())
     {
-        if (obj == null || GetType() != obj.GetType())
-        {
-            return false;
-        }
-
-        ArmorItem otherArmor = (ArmorItem)obj;
-
-        // Porównaj wszystkie właściwości obiektów ArmorItem
-        return id == otherArmor.id &&
-               armorName == otherArmor.armorName &&
-               value == otherArmor.value &&
-               // Porównaj referencje do sprite'ów
-               ReferenceEquals(icon, otherArmor.icon);
+        return false;
     }
+
+    ArmorItem otherArmor = (ArmorItem)obj;
+
+    // Porównaj wszystkie właściwości obiektów ArmorItem
+    return id == otherArmor.id &&
+           armorName == otherArmor.armorName &&
+           value == otherArmor.value &&
+           icon.Equals(otherArmor.icon);
+}
+
 
     public override int GetHashCode()
     {

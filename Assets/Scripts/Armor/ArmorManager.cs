@@ -63,11 +63,12 @@ public class ArmorManager : MonoBehaviour
     }
 
     // Funkcja usuwająca armatkę z listy
-  public void RemoveAll(ArmorItem armor)
-{
-    Armors.RemoveAll(a => a.Equals(armor));
-    Debug.Log("Usuwamy!!!!");
-}
+    public void Remove(ArmorItem armor)
+    {
+        Armors.Remove(armor);
+        Debug.Log("Usuwamy!!!!");
+    }
+
 
 
     public void ListArmors()
