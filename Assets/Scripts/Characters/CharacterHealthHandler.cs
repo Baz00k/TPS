@@ -69,7 +69,7 @@ namespace TPS.Characters
         public void Damage(float amount)
         {
             // Pobierz najwyższy index z listy ArmorItem
-            ArmorItem highestArmor = GetHighestIndexArmor();
+            ArmorItem highestArmor = GetLowestIndexArmor();
 
             // Oblicz obrażenia z uwzględnieniem DMGResistance
             float damage = amount * (1 - highestArmor.DMGResistance);
@@ -86,24 +86,29 @@ namespace TPS.Characters
             }
         }
 
-        private ArmorItem GetHighestIndexArmor()
+        private ArmorItem GetLowestIndexArmor()
+{
+    if (ArmorManager.Instance.Armors.Count == 0)
+    {
+        return null;
+    }
+
+    int lowestIndex = 0;
+    ArmorItem lowestArmor = ArmorManager.Instance.Armors[lowestIndex];
+
+    for (int i = 1; i < ArmorManager.Instance.Armors.Count; i++)
+    {
+        if (ArmorManager.Instance.Armors[i].id < lowestArmor.id)
         {
-            if (ArmorManager.Instance.Armors.Count == 0)
-            {
-                return null;
-            }
-
-            ArmorItem highestArmor = ArmorManager.Instance.Armors[0];
-            foreach (var armor in ArmorManager.Instance.Armors)
-            {
-                if (armor.id > highestArmor.id)
-                {
-                    highestArmor = armor;
-                }
-            }
-
-            return highestArmor;
+            lowestArmor = ArmorManager.Instance.Armors[i];
+            lowestIndex = i;
         }
+    }
+
+    return lowestArmor;
+}
+
+
     }
 }
 
