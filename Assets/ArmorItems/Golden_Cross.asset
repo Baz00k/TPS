@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   armorName: Golden Cross
-  value: 30
+  durability: 100
+  DMGResistance: 0.5
   icon: {fileID: 21300000, guid: ea212e7c7cbaae74a8c635af56475d42, type: 3}

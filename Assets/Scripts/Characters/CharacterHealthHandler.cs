@@ -12,6 +12,10 @@ namespace TPS.Characters
         [SerializeField] private UnityEvent onHeal;
         [SerializeField] private UnityEvent onDamage;
         [SerializeField] private UnityEvent onDeath;
+        [SerializeField] private UnityEvent<ArmorItem> onArmorDurabilityChange;
+        public UnityEvent<ArmorItem> OnArmorDurabilityChange => onArmorDurabilityChange;
+
+
 
         private CharacterStatsHandler statsHandler;
 
@@ -68,47 +72,51 @@ namespace TPS.Characters
 
         public void Damage(float amount)
         {
-            // Pobierz najwyższy index z listy ArmorItem
-            ArmorItem highestArmor = GetLowestIndexArmor();
+            ArmorItem lowestArmor = GetLowestIndexArmor();
 
-            // Oblicz obrażenia z uwzględnieniem DMGResistance
-            float damage = amount * (1 - highestArmor.DMGResistance);
-
-            CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, statsHandler.CurrentStats.MaxHealth);
-            onDamage.Invoke();
-            onHealthChange.Invoke(CurrentHealth);
-
-            UnityEngine.Debug.Log($"Otrzymane obrażenia: {damage}, Aktualny stan zdrowia: {CurrentHealth}");
-
-            if (CurrentHealth == 0)
+            if (lowestArmor != null)
             {
-                onDeath.Invoke();
+                lowestArmor.durability -= (int)amount;
+
+                if (lowestArmor.durability <= 0)
+                {
+                    lowestArmor.durability = 0;
+                }
+
+                OnArmorDurabilityChange.Invoke(lowestArmor);
+
+                float damage = amount * (1 - lowestArmor.DMGResistance);
+                CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, statsHandler.CurrentStats.MaxHealth);
+                onDamage.Invoke();
+                onHealthChange.Invoke(CurrentHealth);
+
+                if (CurrentHealth == 0)
+                {
+                    onDeath.Invoke();
+                }
             }
         }
 
-        private ArmorItem GetLowestIndexArmor()
-{
-    if (ArmorManager.Instance.Armors.Count == 0)
-    {
-        return null;
-    }
-
-    int lowestIndex = 0;
-    ArmorItem lowestArmor = ArmorManager.Instance.Armors[lowestIndex];
-
-    for (int i = 1; i < ArmorManager.Instance.Armors.Count; i++)
-    {
-        if (ArmorManager.Instance.Armors[i].id < lowestArmor.id)
+        public ArmorItem GetLowestIndexArmor()
         {
-            lowestArmor = ArmorManager.Instance.Armors[i];
-            lowestIndex = i;
+            if (ArmorManager.Instance.Armors.Count == 0)
+            {
+                return null;
+            }
+
+            int lowestIndex = 0;
+            ArmorItem lowestArmor = ArmorManager.Instance.Armors[lowestIndex];
+
+            for (int i = 1; i < ArmorManager.Instance.Armors.Count; i++)
+            {
+                if (ArmorManager.Instance.Armors[i].id < lowestArmor.id)
+                {
+                    lowestArmor = ArmorManager.Instance.Armors[i];
+                    lowestIndex = i;
+                }
+            }
+
+            return lowestArmor;
         }
     }
-
-    return lowestArmor;
 }
-
-
-    }
-}
-

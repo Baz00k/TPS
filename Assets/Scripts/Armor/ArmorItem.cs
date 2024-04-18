@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TPS.Characters;
 
 [CreateAssetMenu(fileName ="ArmorItem",menuName ="Armor/Create New Armor")]
 public class ArmorItem : ScriptableObject
 {
     public int id;
     public string armorName;
-    public int value;
+    public int durability;
     public float DMGResistance;
     public Sprite icon;
 
@@ -23,7 +24,7 @@ public class ArmorItem : ScriptableObject
     // Porównaj wszystkie właściwości obiektów ArmorItem
     return id == otherArmor.id &&
            armorName == otherArmor.armorName &&
-           value == otherArmor.value &&
+           durability == otherArmor.durability &&
            icon.Equals(otherArmor.icon);
 }
 
@@ -34,7 +35,7 @@ public class ArmorItem : ScriptableObject
         {
             int hashCode = id;
             hashCode = (hashCode * 397) ^ (armorName != null ? armorName.GetHashCode() : 0);
-            hashCode = (hashCode * 397) ^ value;
+            hashCode = (hashCode * 397) ^ durability;
             hashCode = (hashCode * 397) ^ (icon != null ? icon.GetHashCode() : 0);
             return hashCode;
         }

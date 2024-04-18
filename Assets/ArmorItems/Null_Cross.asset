@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4
   armorName: Null Cross
-  value: 0
+  durability: 2147483647
+  DMGResistance: 0
   icon: {fileID: 21300000, guid: 40deccf3ab8a3a2419b692e9debce133, type: 3}

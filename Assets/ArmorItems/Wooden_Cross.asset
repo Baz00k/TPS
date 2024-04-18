@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   armorName: Wooden Cross
-  value: 10
+  durability: 100
+  DMGResistance: 0.15
   icon: {fileID: 21300000, guid: 25f08444168f7b845a67482259e83d19, type: 3}

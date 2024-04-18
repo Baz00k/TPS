@@ -33,10 +33,13 @@ public class ArmorPickup : MonoBehaviour
     {
         Debug.Log("Trying to remove armor: " + armorItem.armorName);
 
+        // Ustaw durability podnoszonego armoru na 100
+        armorItem.durability = 100;
+
         // Usuń poprzednią zbroję z listy
         ArmorManager.Instance.Remove(armorItem);
 
-        // Dodaj nową zbroję
+        // Dodaj nową zbroję z aktualnym durability ustawionym na 100
         ArmorManager.Instance.Add(armorItem);
 
         // Powiadom HUD o zmianie zbroi
@@ -46,6 +49,7 @@ public class ArmorPickup : MonoBehaviour
         Destroy(gameObject);
         Debug.Log("Armor picked up.");
     }
+
 
     void UpdatePlayerHUD(ArmorItem armor)
     {

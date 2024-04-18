@@ -17,7 +17,6 @@ public class ArmorManager : MonoBehaviour
     public delegate void ArmorChangedEvent(ArmorItem newArmor);
     public event ArmorChangedEvent OnArmorChanged;
 
-
     // Dostęp do instancji singletona
     public static ArmorManager Instance
     {
@@ -69,6 +68,15 @@ public class ArmorManager : MonoBehaviour
         Debug.Log("Usuwamy!!!!");
     }
 
+    public void RemoveArmor(ArmorItem armor)
+    {
+        if (Armors.Contains(armor))
+        {
+            Armors.Remove(armor);
+            OnArmorChanged?.Invoke(armor); // Wywołaj zdarzenie, że tarcza została zmieniona
+        }
+    }
+
 
 
     public void ListArmors()
@@ -89,5 +97,4 @@ public class ArmorManager : MonoBehaviour
     {
     OnArmorChanged?.Invoke(newArmor);
     }
-
 }
