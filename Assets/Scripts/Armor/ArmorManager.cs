@@ -65,7 +65,7 @@ public class ArmorManager : MonoBehaviour
     public void Remove(ArmorItem armor)
     {
         Armors.Remove(armor);
-        Debug.Log("Usuwamy!!!!");
+       // Debug.Log("Usuwamy!!!!");
     }
 
     public void RemoveArmor(ArmorItem armor)

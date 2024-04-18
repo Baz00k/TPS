@@ -31,7 +31,7 @@ public class ArmorPickup : MonoBehaviour
 
     void Pickup()
     {
-        Debug.Log("Trying to remove armor: " + armorItem.armorName);
+        //Debug.Log("Trying to remove armor: " + armorItem.armorName);
 
         // Ustaw durability podnoszonego armoru na 100
         armorItem.durability = 100;
@@ -47,7 +47,7 @@ public class ArmorPickup : MonoBehaviour
 
         // Niszczymy obecną zbroję
         Destroy(gameObject);
-        Debug.Log("Armor picked up.");
+        //Debug.Log("Armor picked up.");
     }
 
 

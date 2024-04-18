@@ -8,7 +8,7 @@ namespace TPS.UI
     {
         [SerializeField] private GameObject entityToWatch;
         [SerializeField] private Slider slider;
-        private const float MaxSliderValue = 100f;
+        [SerializeField] private Image armorIcon;
 
         private CharacterHealthHandler healthHandler;
 
@@ -17,11 +17,10 @@ namespace TPS.UI
             if (entityToWatch == null)
             {
                 Debug.LogError("ArmorBar: entityToWatch is not set!");
+                return;
             }
 
-            var healthHandlerExists = entityToWatch.TryGetComponent<CharacterHealthHandler>(out healthHandler);
-
-            if (!healthHandlerExists)
+            if (!entityToWatch.TryGetComponent(out healthHandler))
             {
                 Debug.LogError("ArmorBar: entityToWatch does not have a CharacterHealthHandler!");
                 return;
@@ -37,18 +36,9 @@ namespace TPS.UI
 
         private void UpdateArmorBar(ArmorItem armorItem)
         {
-            ArmorItem lowestArmor = healthHandler.GetLowestIndexArmor();
+            slider.value = armorItem.durability;  // Aktualizujesz wartość dla aktualnie podnoszonego armoru
 
-            if (lowestArmor == null)
-            {
-                DestroyArmor();
-                return;
-            }
-
-            slider.maxValue = MaxSliderValue; // Ustaw max wartość slidera na 100
-            slider.value = lowestArmor.durability;  // Aktualizujesz wartość dla durability najniższego armoru
-
-            if (armorItem.durability <= 0)  // Sprawdzasz durability aktualnego armoru
+            if (armorItem.durability <= 0)
             {
                 DestroyArmor();
             }
@@ -62,7 +52,17 @@ namespace TPS.UI
             {
                 // Usuń najniższy obiekt ArmorItem z ArmorManager
                 ArmorManager.Instance.RemoveArmor(lowestArmor);
+
+                // Aktualizuj ikonę armoru na nową wartość
+                ArmorItem newLowestArmor = healthHandler.GetLowestIndexArmor();
+                if (newLowestArmor != null && armorIcon != null)
+                {
+                    armorIcon.sprite = newLowestArmor.icon;
+                }
             }
         }
     }
 }
+
+
+
