@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -65,7 +64,6 @@ public class ArmorManager : MonoBehaviour
     public void Remove(ArmorItem armor)
     {
         Armors.Remove(armor);
-       // Debug.Log("Usuwamy!!!!");
     }
 
     public void RemoveArmor(ArmorItem armor)
@@ -76,8 +74,6 @@ public class ArmorManager : MonoBehaviour
             OnArmorChanged?.Invoke(armor); // Wywołaj zdarzenie, że tarcza została zmieniona
         }
     }
-
-
 
     public void ListArmors()
     {
@@ -95,6 +91,6 @@ public class ArmorManager : MonoBehaviour
 
     public void NotifyArmorChanged(ArmorItem newArmor)
     {
-    OnArmorChanged?.Invoke(newArmor);
+        OnArmorChanged?.Invoke(newArmor);
     }
 }
