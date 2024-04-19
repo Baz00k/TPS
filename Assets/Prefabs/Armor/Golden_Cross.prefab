@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 393977693000689927}
   - component: {fileID: 3396498742523492455}
-  - component: {fileID: 6694547199177778815}
   - component: {fileID: 6867549770230288695}
   - component: {fileID: 8548324668224344761}
   m_Layer: 0
@@ -87,19 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6694547199177778815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8322825667239117294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e544ddad1e6ecd440b95201e5de26a6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ArmorItem: {fileID: 11400000, guid: a121e676d97f08e4bbd02db056b78a0e, type: 2}
 --- !u!58 &6867549770230288695
 CircleCollider2D:
   m_ObjectHideFlags: 0
