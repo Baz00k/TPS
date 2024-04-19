@@ -15,11 +15,23 @@ namespace TPS.Characters
 
         [SerializeField]
         [Tooltip("The interval at which the enemy will search for the player.")]
-        private float findPlayerInterval = 1f;
+        private float findPlayerInterval = 10000f;
 
         [SerializeField]
         [Tooltip("The distance at which the enemy will stop moving towards the player.")]
-        private float targetDistance = 10f;
+        private float targetDistance = 1000000f;
+
+        [SerializeField]
+        [Tooltip("The bullet prefab to shoot.")]
+        private GameObject bulletPrefab;
+
+        [SerializeField]
+        [Tooltip("The transform from which bullets will be spawned.")]
+        private Transform firePoint;
+
+        [SerializeField]
+        [Tooltip("The speed of the bullet.")]
+        private float bulletSpeed = 40f;
 
         private Transform target;
         private Coroutine findPlayerCoroutine;
@@ -58,8 +70,26 @@ namespace TPS.Characters
 
             agent.SetDestination(target.position);
             rotateAgent.UpdateAgent();
+
+            // Стрельба в направлении игрока
+            Shoot();
         }
 
+        private void Shoot()
+        {
+            if (Vector3.Distance(transform.position, target.position) <= targetDistance)
+    {
+        // Создаем пулю
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        // Задаем направление пули в сторону игрока
+        Vector2 direction = (target.position - firePoint.position).normalized;
+        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+        bulletRb.velocity = direction * bulletSpeed;
+
+        // Добавляем начальный импульс в направлении движения врага, чтобы пули не "застывали" около врагов
+        bulletRb.AddForce(agent.velocity, ForceMode2D.Impulse);
+    }
+        }
 
         private void Die()
         {
