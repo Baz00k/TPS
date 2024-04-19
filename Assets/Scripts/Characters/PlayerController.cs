@@ -35,6 +35,14 @@ namespace TPS.Characters
             isUsingItem = value.isPressed;
         }
 
+        public void OnPickupItem(InputValue value)
+        {
+            if (value.isPressed)
+            {
+                InventoryHandler.PickupItem();
+            }
+        }
+
         private void RotateTowardsMouse()
         {
             // Rotate the character towards the mouse position

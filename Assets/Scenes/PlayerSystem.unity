@@ -348,6 +348,10 @@ PrefabInstance:
       propertyPath: entityToWatch
       value: 
       objectReference: {fileID: 6372492907817795589}
+    - target: {fileID: 2845681043270632146, guid: b0ad62fb064b54a438b552e044b5a333, type: 3}
+      propertyPath: entityToWatch
+      value: 
+      objectReference: {fileID: 6372492907817795589}
     - target: {fileID: 3083061249181921683, guid: b0ad62fb064b54a438b552e044b5a333, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -439,6 +443,14 @@ PrefabInstance:
     - target: {fileID: 6257139746138059313, guid: b0ad62fb064b54a438b552e044b5a333, type: 3}
       propertyPath: m_Name
       value: PlayerHUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854171697219084170, guid: b0ad62fb064b54a438b552e044b5a333, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854171697219084170, guid: b0ad62fb064b54a438b552e044b5a333, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
