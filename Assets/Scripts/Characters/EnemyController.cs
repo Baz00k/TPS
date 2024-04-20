@@ -21,6 +21,18 @@ namespace TPS.Characters
         [Tooltip("The distance at which the enemy will stop moving towards the player.")]
         private float targetDistance = 10f;
 
+        [SerializeField]
+        [Tooltip("The bullet prefab to shoot.")]
+        private GameObject bulletPrefab;
+
+        [SerializeField]
+        [Tooltip("The transform from which bullets will be spawned.")]
+        private Transform firePoint;
+
+        [SerializeField]
+        [Tooltip("The speed of the bullet.")]
+        private float bulletSpeed = 10f;
+
         private Transform target;
         private Coroutine findPlayerCoroutine;
         private NavMeshAgent agent;
@@ -31,13 +43,13 @@ namespace TPS.Characters
             base.Awake();
 
             agent = GetComponent<NavMeshAgent>();
+            agent.speed = StatsHandler.CurrentStats.MovementSpeed;
             agent.stoppingDistance = targetDistance;
             agent.updateUpAxis = false;
 
             rotateAgent = new RotateAgentSmoothly(agent, GetComponent<AgentOverride2d>(), 180f);
 
             HealthHandler.OnDeath.AddListener(Die);
-            StatsHandler.OnStatsChanged.AddListener(stats => agent.speed = stats.MovementSpeed);
         }
 
         protected void Start()
@@ -58,8 +70,23 @@ namespace TPS.Characters
 
             agent.SetDestination(target.position);
             rotateAgent.UpdateAgent();
+
+            // Стрельба в направлении игрока
+            Shoot();
         }
 
+        private void Shoot()
+        {
+            // Проверяем, достиг ли враг игрока
+            if (Vector3.Distance(transform.position, target.position) <= targetDistance)
+            {
+                // Создаем пулю
+                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                // Задаем направление пули в сторону игрока
+                Vector2 direction = (target.position - firePoint.position).normalized;
+                bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+            }
+        }
 
         private void Die()
         {

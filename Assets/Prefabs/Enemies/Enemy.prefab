@@ -239,7 +239,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerTag: Player
   findPlayerInterval: 1
-  targetDistance: 4
+  targetDistance: 8
+  bulletPrefab: {fileID: 7287932448995512563, guid: 87972b595f1434410a0277ac8c3eb60c, type: 3}
+  firePoint: {fileID: 295422032384819769}
+  bulletSpeed: 12
 --- !u!1 &5465694133554084769
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,10 +352,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8004118668924047989}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 1.15, y: -0.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7435524124711182465}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
