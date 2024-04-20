@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using TPS.UI;
 
 
 namespace TPS.Characters
@@ -15,6 +17,7 @@ namespace TPS.Characters
 
         private CharacterStatsHandler statsHandler;
         private CharacterArmorController armorController;
+        private DeathScreen deathScreen;
 
         public UnityEvent OnHeal => onHeal;
         public UnityEvent OnDamage => onDamage;
@@ -74,7 +77,13 @@ namespace TPS.Characters
             if (CurrentHealth == 0)
             {
                 onDeath.Invoke();
+                ChangeSceneToDeathScene();
             }
+        }
+
+        private void ChangeSceneToDeathScene()
+        {
+            SceneManager.LoadScene(4);
         }
     }
 }
