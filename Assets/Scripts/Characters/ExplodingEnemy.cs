@@ -1,66 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TPS.Characters;
+using UnityEngine;
 
-public class ExplosiveEnemy : MonoBehaviour
+public class ExplosiveEnemy : EnemyController
 {
-    public GameObject explosionEffect; // Префаб эффекта взрыва
-    public float speed = 3f; // Скорость движения врага
-    public int damage = 10; // Урон, наносимый игроку
-    public int health = 250; // Здоровье врага
+    [SerializeField] private GameObject explosionEffect;
+    [SerializeField] private int damageAmount = 20;
 
-    private bool facingRight = true; // Направление взгляда врага
+    private bool facingRight = true;
 
-    void Update()
+    protected override void Awake()
     {
-        // Движение в направлении игрока
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            Vector2 direction = player.transform.position - transform.position;
-            direction.Normalize();
-            transform.Translate(direction * speed * Time.deltaTime);
+        base.Awake();
 
-            // Поворот взрывающегося врага в направлении движения
-            if (direction.x > 0 && !facingRight)
+        HealthHandler.OnDeath.AddListener(Death);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (target != null)
+        {
+            if (target.position.x < transform.position.x && facingRight)
             {
                 Flip();
             }
-            else if (direction.x < 0 && facingRight)
+            else if (target.position.x > transform.position.x && !facingRight)
             {
                 Flip();
             }
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Bullet")) // Проверяем, прикоснулась ли пуля игрока к врагу
-        {
-            Debug.Log("Enemy hit by bullet."); // Добавим отладочное сообщение для проверки попадания пули
-            Damage(15); // Наносим урон врагу
-        }
-    }
-
-    void Damage(int damageAmount)
-    {
-        health -= damageAmount;
-        if (health <= 0)
-        {
-            Death();
         }
     }
 
     void Death()
     {
-        Debug.Log("Enemy died."); // Добавим отладочное сообщение для проверки смерти врага
-
         if (explosionEffect != null)
         {
-            Debug.Log("Explosion!"); // Добавим отладочное сообщение для проверки взрыва
-            Instantiate(explosionEffect, transform.position, Quaternion.identity); // Создаем эффект взрыва в позиции врага
-            Destroy(gameObject); // Уничтожаем врага
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
         }
     }
 
@@ -70,7 +46,16 @@ public class ExplosiveEnemy : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
 
-        Debug.Log("Enemy flipped."); // Добавим отладочное сообщение для проверки поворота врага
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            if (collision.collider.TryGetComponent<CharacterHealthHandler>(out var healthHandler))
+            {
+                healthHandler.Damage(damageAmount);
+            }
+        }
     }
 }

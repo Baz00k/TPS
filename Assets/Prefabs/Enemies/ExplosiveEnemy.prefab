@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 755420482040748034}
   - component: {fileID: 1692617320290494166}
   - component: {fileID: 8137490006195781084}
+  - component: {fileID: 8950406507192820130}
   - component: {fileID: 3619649905643304495}
   - component: {fileID: 6447927823097929750}
   - component: {fileID: 2840202915216532236}
@@ -19,7 +20,7 @@ GameObject:
   - component: {fileID: 8383474613242102416}
   m_Layer: 0
   m_Name: ExplosiveEnemy
-  m_TagString: Untagged
+  m_TagString: ExplosiveEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,6 +119,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &8950406507192820130
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2811404132637660875}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000000003950994, y: -0.033143345}
+  m_Size: {x: 3.312501, y: 1.7179445}
+  m_Direction: 1
 --- !u!195 &3619649905643304495
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -165,8 +201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats:
-    MaxHealth: 100
-    MovementSpeed: 5
+    MaxHealth: 250
+    MovementSpeed: 3
   onStatsChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -221,7 +257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152254605cc003c43b2c4828964c0764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerTag: Player
+  findPlayerInterval: 1
+  targetDistance: 0
   explosionEffect: {fileID: 9145447163368895911, guid: 87e115ebbdabce246ad48c40bafde862, type: 3}
-  speed: 3
-  damage: 10
-  health: 250
+  damageAmount: 20
