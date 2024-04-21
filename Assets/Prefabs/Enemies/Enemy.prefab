@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 6145760767757951865}
   - component: {fileID: 8694291220910569502}
   - component: {fileID: 4662948746803737646}
+  - component: {fileID: 2773328054390584766}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -214,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats:
     MaxHealth: 100
-    MovementSpeed: 3
+    MovementSpeed: 2.5
   onStatsChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -256,7 +257,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterHand: {fileID: 7150152147578336999}
   inventorySize: 1
-  startingItems: []
+  startingItems:
+  - {fileID: -2528531098089343756, guid: e790a1f690adc46a3a92a176cec792c7, type: 3}
 --- !u!114 &4662948746803737646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +273,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerTag: Player
   findPlayerInterval: 1
-  targetDistance: 5
+  targetDistance: 4
+--- !u!114 &2773328054390584766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153994652955984481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96dde0bdbbc34404a81623564018e2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onArmorChange:
+    m_PersistentCalls:
+      m_Calls: []
+  onArmorDurabilityChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5465694133554084769
 GameObject:
   m_ObjectHideFlags: 0

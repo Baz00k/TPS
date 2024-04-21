@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6907622846489975068}
   - component: {fileID: 259586020789351840}
   - component: {fileID: 8383474613242102416}
+  - component: {fileID: 332403847248305431}
   m_Layer: 0
   m_Name: ExplosiveEnemy
   m_TagString: ExplosiveEnemy
@@ -262,3 +263,21 @@ MonoBehaviour:
   targetDistance: 0
   explosionEffect: {fileID: 9145447163368895911, guid: 87e115ebbdabce246ad48c40bafde862, type: 3}
   damageAmount: 20
+--- !u!114 &332403847248305431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2811404132637660875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96dde0bdbbc34404a81623564018e2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onArmorChange:
+    m_PersistentCalls:
+      m_Calls: []
+  onArmorDurabilityChange:
+    m_PersistentCalls:
+      m_Calls: []
