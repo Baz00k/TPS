@@ -91153,6 +91153,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1690392419}
     m_Modifications:
+    - target: {fileID: 322167834600680223, guid: 02425aa0ce52b8840b107050d8c463f2, type: 3}
+      propertyPath: onPlayerEnter.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 322167834600680223, guid: 02425aa0ce52b8840b107050d8c463f2, type: 3}
+      propertyPath: onPlayerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 322167834600680223, guid: 02425aa0ce52b8840b107050d8c463f2, type: 3}
+      propertyPath: onPlayerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3202775350190801815}
+    - target: {fileID: 322167834600680223, guid: 02425aa0ce52b8840b107050d8c463f2, type: 3}
+      propertyPath: onPlayerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 322167834600680223, guid: 02425aa0ce52b8840b107050d8c463f2, type: 3}
+      propertyPath: onPlayerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 322167834600680223, guid: 02425aa0ce52b8840b107050d8c463f2, type: 3}
+      propertyPath: onPlayerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 322167834600680223, guid: 02425aa0ce52b8840b107050d8c463f2, type: 3}
+      propertyPath: onPlayerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1228443077057930108, guid: 02425aa0ce52b8840b107050d8c463f2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.0312
@@ -91197,11 +91225,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Extract
       objectReference: {fileID: 0}
+    - target: {fileID: 8804908423982927111, guid: 02425aa0ce52b8840b107050d8c463f2, type: 3}
+      propertyPath: sceneObject.m_SceneName
+      value: 2levelTileMap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02425aa0ce52b8840b107050d8c463f2, type: 3}
+--- !u!114 &3202775350190801815 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8804908423982927111, guid: 02425aa0ce52b8840b107050d8c463f2, type: 3}
+  m_PrefabInstance: {fileID: 3202775350190801814}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a6cecbb3a0142e18714020eedc9e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
