@@ -54,7 +54,7 @@ MonoBehaviour:
   fireRate: 5
   projectileSpeed: 18
   range: 12
-  damage: 5
+  damage: 8
 --- !u!1 &3796851717885767521
 GameObject:
   m_ObjectHideFlags: 0

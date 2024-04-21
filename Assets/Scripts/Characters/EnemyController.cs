@@ -18,8 +18,12 @@ namespace TPS.Characters
         private float findPlayerInterval = 1f;
 
         [SerializeField]
-        [Tooltip("The distance at which the enemy will stop moving towards the player.")]
+        [Tooltip("The distance at which the enemy will stop moving towards the player and starts attacking.")]
         private float targetDistance = 10f;
+
+        [SerializeField]
+        [Tooltip("Distance at which the enemy will start following the player.")]
+        private float followDistance = 20f;
 
         protected Transform target;
         private Coroutine findPlayerCoroutine;
@@ -55,6 +59,9 @@ namespace TPS.Characters
                 findPlayerCoroutine ??= StartCoroutine(FindPlayerCoroutine());
                 return;
             }
+
+            // Stop following player if it's too far
+            if (Vector3.Distance(transform.position, target.position) >= followDistance) return;
 
             agent.SetDestination(target.position);
             rotateAgent.UpdateAgent();

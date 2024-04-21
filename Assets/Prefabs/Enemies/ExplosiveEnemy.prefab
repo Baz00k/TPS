@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats:
-    MaxHealth: 250
+    MaxHealth: 350
     MovementSpeed: 3
   onStatsChanged:
     m_PersistentCalls:
@@ -261,8 +261,9 @@ MonoBehaviour:
   PlayerTag: Player
   findPlayerInterval: 1
   targetDistance: 0
+  followDistance: 20
   explosionEffect: {fileID: 9145447163368895911, guid: 87e115ebbdabce246ad48c40bafde862, type: 3}
-  damageAmount: 20
+  damageAmount: 1
 --- !u!114 &332403847248305431
 MonoBehaviour:
   m_ObjectHideFlags: 0

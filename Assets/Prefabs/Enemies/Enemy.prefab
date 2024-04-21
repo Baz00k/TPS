@@ -273,7 +273,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerTag: Player
   findPlayerInterval: 1
-  targetDistance: 4
+  targetDistance: 5
+  followDistance: 25
 --- !u!114 &2773328054390584766
 MonoBehaviour:
   m_ObjectHideFlags: 0

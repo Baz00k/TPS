@@ -51,7 +51,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   projectilePrefab: {fileID: 7287932448995512563, guid: 87972b595f1434410a0277ac8c3eb60c, type: 3}
   firePoint: {fileID: 1744880809905627962}
-  fireRate: 8
+  fireRate: 7
   projectileSpeed: 18
   range: 12
   damage: 40

@@ -268,6 +268,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92e7c79e6b8746d39fbf6e322514959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathScene:
+    m_SceneName: 
 --- !u!114 &9103917017032866010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,7 +413,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 1864683138, guid: 6d396b8d56a7d41e6880d80b50b5df21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
