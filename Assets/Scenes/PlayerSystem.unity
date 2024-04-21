@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &1869212542 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6499188191046701032, guid: b0ad62fb064b54a438b552e044b5a333, type: 3}
+  m_PrefabInstance: {fileID: 7756383029814159124}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1992866121
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +359,18 @@ PrefabInstance:
       propertyPath: entityToWatch
       value: 
       objectReference: {fileID: 6372492907817795589}
+    - target: {fileID: 2845681043270632146, guid: b0ad62fb064b54a438b552e044b5a333, type: 3}
+      propertyPath: armorIcon
+      value: 
+      objectReference: {fileID: 1869212542}
+    - target: {fileID: 2845681043270632146, guid: b0ad62fb064b54a438b552e044b5a333, type: 3}
+      propertyPath: entityToWatch
+      value: 
+      objectReference: {fileID: 6372492907817795589}
+    - target: {fileID: 2845681043270632146, guid: b0ad62fb064b54a438b552e044b5a333, type: 3}
+      propertyPath: nullArmorSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f6eaf2c5c5cfb754c92c6e037d41bd86, type: 3}
     - target: {fileID: 3083061249181921683, guid: b0ad62fb064b54a438b552e044b5a333, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -439,6 +462,14 @@ PrefabInstance:
     - target: {fileID: 6257139746138059313, guid: b0ad62fb064b54a438b552e044b5a333, type: 3}
       propertyPath: m_Name
       value: PlayerHUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854171697219084170, guid: b0ad62fb064b54a438b552e044b5a333, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854171697219084170, guid: b0ad62fb064b54a438b552e044b5a333, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

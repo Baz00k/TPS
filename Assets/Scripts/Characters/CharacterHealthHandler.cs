@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+
 namespace TPS.Characters
 {
     [RequireComponent(typeof(CharacterStatsHandler))]
+    [RequireComponent(typeof(CharacterArmorController))]
     public class CharacterHealthHandler : MonoBehaviour
     {
         [SerializeField] private UnityEvent<float> onHealthChange;
@@ -12,6 +14,7 @@ namespace TPS.Characters
         [SerializeField] private UnityEvent onDeath;
 
         private CharacterStatsHandler statsHandler;
+        private CharacterArmorController armorController;
 
         public UnityEvent OnHeal => onHeal;
         public UnityEvent OnDamage => onDamage;
@@ -24,6 +27,7 @@ namespace TPS.Characters
         private void Awake()
         {
             statsHandler = GetComponent<CharacterStatsHandler>();
+            armorController = GetComponent<CharacterArmorController>();
         }
 
         private void Start()
@@ -40,7 +44,7 @@ namespace TPS.Characters
                     Heal(amount);
                     break;
                 case float n when n < 0:
-                    Damage(-amount);
+                    Damage(amount);
                     break;
             }
         }
@@ -54,7 +58,16 @@ namespace TPS.Characters
 
         public void Damage(float amount)
         {
-            CurrentHealth = Mathf.Clamp(CurrentHealth - amount, 0, statsHandler.CurrentStats.MaxHealth);
+            var currentArmor = armorController.CurrentArmor;
+            var damageAmount = amount;
+
+            if (currentArmor != null)
+            {
+                armorController.DamageArmor(amount);
+                damageAmount = amount * (1 - currentArmor.armor.DMGResistance);
+            }
+
+            CurrentHealth = Mathf.Clamp(CurrentHealth - damageAmount, 0, statsHandler.CurrentStats.MaxHealth);
             onDamage.Invoke();
             onHealthChange.Invoke(CurrentHealth);
 

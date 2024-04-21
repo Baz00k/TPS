@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TPS.Armor;
 
+[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(CharacterArmorController))]
 public class CharacterInventoryHandler : MonoBehaviour
 {
     [Tooltip("The transform where the character's hand is located")]
@@ -17,11 +20,16 @@ public class CharacterInventoryHandler : MonoBehaviour
 
     private BaseInventoryItem[] inventoryItems;
     private int activeItemIndex = -1;
+    private Collider2D characterCollider;
+    private CharacterArmorController armorController;
 
     private void Awake()
     {
         inventoryItems = new BaseInventoryItem[inventorySize];
         InitializeStartingItems();
+
+        characterCollider = GetComponent<Collider2D>();
+        armorController = GetComponent<CharacterArmorController>();
     }
 
     private void Start()
@@ -105,6 +113,32 @@ public class CharacterInventoryHandler : MonoBehaviour
         if (activeItemIndex >= 0 && activeItemIndex < inventorySize && inventoryItems[activeItemIndex] != null)
         {
             inventoryItems[activeItemIndex].Use();
+        }
+    }
+
+    public void PickupItem()
+    {
+        Collider2D[] colliders = new Collider2D[10];
+        ContactFilter2D filter = new()
+        {
+            useLayerMask = true,
+            layerMask = 1 << gameObject.layer,
+            useTriggers = true,
+        };
+
+        characterCollider.OverlapCollider(filter, colliders);
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider == null) break;
+
+            // TODO: Pickup items other than armor
+
+            if (collider.TryGetComponent(out ArmorPickup armorPickup))
+            {
+                armorController.AddArmor(armorPickup.GetArmorItem());
+                Destroy(collider.gameObject);
+            }
         }
     }
 }
