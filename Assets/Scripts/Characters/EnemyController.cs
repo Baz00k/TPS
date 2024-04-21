@@ -21,10 +21,10 @@ namespace TPS.Characters
         [Tooltip("The distance at which the enemy will stop moving towards the player.")]
         private float targetDistance = 10f;
 
-        private Transform target;
+        protected Transform target;
         private Coroutine findPlayerCoroutine;
-        private NavMeshAgent agent;
-        private RotateAgentSmoothly rotateAgent;
+        protected NavMeshAgent agent;
+        protected RotateAgentSmoothly rotateAgent;
 
         protected override void Awake()
         {
@@ -36,8 +36,8 @@ namespace TPS.Characters
 
             rotateAgent = new RotateAgentSmoothly(agent, GetComponent<AgentOverride2d>(), 180f);
 
-            HealthHandler.OnDeath.AddListener(Die);
             StatsHandler.OnStatsChanged.AddListener(stats => agent.speed = stats.MovementSpeed);
+            HealthHandler.OnDeath.AddListener(Die);
         }
 
         protected void Start()
@@ -48,7 +48,7 @@ namespace TPS.Characters
             }
         }
 
-        protected void Update()
+        protected virtual void Update()
         {
             if (target == null)
             {
@@ -58,8 +58,17 @@ namespace TPS.Characters
 
             agent.SetDestination(target.position);
             rotateAgent.UpdateAgent();
+
+            if (Vector3.Distance(transform.position, target.position) <= targetDistance)
+            {
+                Attack();
+            }
         }
 
+        private void Attack()
+        {
+            InventoryHandler.UseActiveItem();
+        }
 
         private void Die()
         {

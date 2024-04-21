@@ -10,6 +10,6 @@ namespace TPS.Characters
         public int MaxHealth = 100;
 
         [Tooltip("The movement speed of the character in units per second")]
-        public int MovementSpeed = 5;
+        public float MovementSpeed = 5;
     }
 }
