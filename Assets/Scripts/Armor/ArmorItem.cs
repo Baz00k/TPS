@@ -16,10 +16,10 @@ namespace TPS.Armor
         public Armor armor;
         public float currentDurability;
 
-        public ArmorItem(Armor armor)
+        public ArmorItem(Armor armorStats)
         {
-            this.armor = armor;
-            this.currentDurability = armor.baseDurability;
+            armor = armorStats;
+            currentDurability = armorStats.baseDurability;
         }
     }
 

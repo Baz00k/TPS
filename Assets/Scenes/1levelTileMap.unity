@@ -80655,7 +80655,7 @@ Transform:
   m_GameObject: {fileID: 1690392417}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 0, z: 0}
+  m_LocalPosition: {x: 6, y: -26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -91140,6 +91140,63 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!1001 &1903424987
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1046485289521058750, guid: fee803ba39571f242b17f289674b997d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046485289521058750, guid: fee803ba39571f242b17f289674b997d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046485289521058750, guid: fee803ba39571f242b17f289674b997d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046485289521058750, guid: fee803ba39571f242b17f289674b997d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046485289521058750, guid: fee803ba39571f242b17f289674b997d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046485289521058750, guid: fee803ba39571f242b17f289674b997d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046485289521058750, guid: fee803ba39571f242b17f289674b997d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046485289521058750, guid: fee803ba39571f242b17f289674b997d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046485289521058750, guid: fee803ba39571f242b17f289674b997d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046485289521058750, guid: fee803ba39571f242b17f289674b997d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741716906313686701, guid: fee803ba39571f242b17f289674b997d, type: 3}
+      propertyPath: m_Name
+      value: Wooden_Cross
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fee803ba39571f242b17f289674b997d, type: 3}
 --- !u!4 &1153750498367448465 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1228443077057930108, guid: 02425aa0ce52b8840b107050d8c463f2, type: 3}
@@ -91251,3 +91308,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1690392419}
   - {fileID: 230834797}
+  - {fileID: 1903424987}

@@ -475,8 +475,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 553341937}
-        m_TargetAssemblyTypeName: TPS.UI.DeathScreen, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -571,9 +571,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 553341935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a47c71e3c2b152d4d8b508f2b2d338d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 47a6cecbb3a0142e18714020eedc9e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneObject:
+    m_SceneName: 1levelTileMap
 --- !u!1 &865190060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,8 +1201,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 553341937}
-        m_TargetAssemblyTypeName: TPS.UI.DeathScreen, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: LoadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

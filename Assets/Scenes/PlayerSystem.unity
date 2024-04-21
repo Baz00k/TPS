@@ -337,6 +337,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5986168353238493247, guid: a5c4b79cd2b99436395d9b8bc246adc2, type: 3}
+      propertyPath: deathScene.m_SceneName
+      value: DeathScreen
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -463,6 +467,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerHUD
       objectReference: {fileID: 0}
+    - target: {fileID: 8412284791574682255, guid: b0ad62fb064b54a438b552e044b5a333, type: 3}
+      propertyPath: entityToWatch
+      value: 
+      objectReference: {fileID: 6372492907817795589}
     - target: {fileID: 8854171697219084170, guid: b0ad62fb064b54a438b552e044b5a333, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

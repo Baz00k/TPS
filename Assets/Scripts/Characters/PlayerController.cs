@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace TPS.Characters
 {
@@ -7,6 +8,7 @@ namespace TPS.Characters
     [RequireComponent(typeof(CharacterMovement))]
     public class PlayerController : BaseCharacterController
     {
+        [SerializeField] SceneObject deathScene;
         private bool isUsingItem;
         private CharacterMovement Movement { get; set; }
 
@@ -15,6 +17,7 @@ namespace TPS.Characters
             base.Awake();
 
             Movement = GetComponent<CharacterMovement>();
+            HealthHandler.OnDeath.AddListener(OnDeath);
         }
 
         public void OnMove(InputValue value)
@@ -65,6 +68,11 @@ namespace TPS.Characters
             {
                 InventoryHandler.UseActiveItem();
             }
+        }
+
+        private void OnDeath()
+        {
+            SceneManager.LoadScene(deathScene);
         }
     }
 }

@@ -17,7 +17,6 @@ namespace TPS.Characters
 
         private CharacterStatsHandler statsHandler;
         private CharacterArmorController armorController;
-        private DeathScreen deathScreen;
 
         public UnityEvent OnHeal => onHeal;
         public UnityEvent OnDamage => onDamage;
@@ -74,16 +73,10 @@ namespace TPS.Characters
             onDamage.Invoke();
             onHealthChange.Invoke(CurrentHealth);
 
-            if (CurrentHealth == 0)
+            if (CurrentHealth <= 0)
             {
                 onDeath.Invoke();
-                ChangeSceneToDeathScene();
             }
-        }
-
-        private void ChangeSceneToDeathScene()
-        {
-            SceneManager.LoadScene(4);
         }
     }
 }

@@ -293,14 +293,25 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4756789940382469722, guid: 14758ebf9f377774c9692654313a8e2f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2845681043270632146}
+      addedObject: {fileID: 8412284791574682255}
   m_SourcePrefab: {fileID: 100100000, guid: 14758ebf9f377774c9692654313a8e2f, type: 3}
+--- !u!114 &6499188191046701032 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5022375673406475271, guid: 14758ebf9f377774c9692654313a8e2f, type: 3}
+  m_PrefabInstance: {fileID: 2270607136343213039}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6737756774139579829 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4756789940382469722, guid: 14758ebf9f377774c9692654313a8e2f, type: 3}
   m_PrefabInstance: {fileID: 2270607136343213039}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2845681043270632146
+--- !u!114 &8412284791574682255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -309,13 +320,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6737756774139579829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18819a7818fe77046ad2dd7c69051f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: a441689cf26bd477289f72e3f8b8176b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   entityToWatch: {fileID: 0}
   slider: {fileID: 7354735499636425608}
-  armorIcon: {fileID: 0}
-  nullArmorSprite: {fileID: 0}
+  armorIcon: {fileID: 6499188191046701032}
+  nullArmorSprite: {fileID: 21300000, guid: f6eaf2c5c5cfb754c92c6e037d41bd86, type: 3}
 --- !u!114 &7354735499636425608 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8760510426170294375, guid: 14758ebf9f377774c9692654313a8e2f, type: 3}

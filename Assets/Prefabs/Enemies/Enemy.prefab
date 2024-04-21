@@ -258,7 +258,7 @@ MonoBehaviour:
   characterHand: {fileID: 7150152147578336999}
   inventorySize: 1
   startingItems:
-  - {fileID: -2528531098089343756, guid: e790a1f690adc46a3a92a176cec792c7, type: 3}
+  - {fileID: -2528531098089343756, guid: 174494591d43f4ee0846b9d411e59caf, type: 3}
 --- !u!114 &4662948746803737646
 MonoBehaviour:
   m_ObjectHideFlags: 0
