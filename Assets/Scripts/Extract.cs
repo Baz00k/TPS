@@ -13,8 +13,11 @@ public class Extract : MonoBehaviour
     }
 
     private void LoadSceneNumberThree()
-    {
-        SceneManager.LoadScene(3);
-        SceneManager.LoadScene(2, LoadSceneMode.Additive);
-    }
+     {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
+
+        SceneManager.LoadScene(nextSceneIndex);
+        SceneManager.LoadScene(nextSceneIndex - 1, LoadSceneMode.Additive);
+    }   
 }
