@@ -31,12 +31,12 @@ namespace TPS.Characters
             base.Awake();
 
             agent = GetComponent<NavMeshAgent>();
-            agent.speed = StatsHandler.CurrentStats.MovementSpeed;
             agent.stoppingDistance = targetDistance;
             agent.updateUpAxis = false;
 
             rotateAgent = new RotateAgentSmoothly(agent, GetComponent<AgentOverride2d>(), 180f);
 
+            StatsHandler.OnStatsChanged.AddListener(stats => agent.speed = stats.MovementSpeed);
             HealthHandler.OnDeath.AddListener(Die);
         }
 
