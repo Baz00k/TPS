@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 8283785594021087118}
   - component: {fileID: 1785502855334620670}
   - component: {fileID: 5826235576843076481}
-  - component: {fileID: 58171401106680085}
-  - component: {fileID: 4506576960169304811}
   m_Layer: 5
   m_Name: PlayerHUD
   m_TagString: Untagged
@@ -105,35 +103,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &58171401106680085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6257139746138059313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b8d9d8f2e8d6474093ebe0b4c52d06e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  armorIconImage: {fileID: 6499188191046701032}
---- !u!114 &4506576960169304811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6257139746138059313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47fcb3f1de621e4c80f5ecd8982c98a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Armors:
-  - {fileID: 11400000, guid: f7e25703cc4c82b4ba868deb01850a99, type: 2}
-  ArmorContent: {fileID: 0}
-  ArmorItem: {fileID: 0}
 --- !u!1001 &2270607136343213039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -326,17 +295,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2845681043270632146}
   m_SourcePrefab: {fileID: 100100000, guid: 14758ebf9f377774c9692654313a8e2f, type: 3}
---- !u!114 &6499188191046701032 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5022375673406475271, guid: 14758ebf9f377774c9692654313a8e2f, type: 3}
-  m_PrefabInstance: {fileID: 2270607136343213039}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6737756774139579829 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4756789940382469722, guid: 14758ebf9f377774c9692654313a8e2f, type: 3}
@@ -357,6 +315,7 @@ MonoBehaviour:
   entityToWatch: {fileID: 0}
   slider: {fileID: 7354735499636425608}
   armorIcon: {fileID: 0}
+  nullArmorSprite: {fileID: 0}
 --- !u!114 &7354735499636425608 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8760510426170294375, guid: 14758ebf9f377774c9692654313a8e2f, type: 3}

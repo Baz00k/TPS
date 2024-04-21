@@ -1,24 +1,14 @@
 using UnityEngine;
 
-public class ArmorPickup : MonoBehaviour
+namespace TPS.Armor
 {
-    public ArmorItem armorItem;
-
-    public void Pickup()
+    public class ArmorPickup : MonoBehaviour
     {
-        // Ustaw durability podnoszonego armoru na 100
-        armorItem.durability = 100;
+        public Armor armor;
 
-        // Usuń poprzednią zbroję z listy
-        ArmorManager.Instance.Remove(armorItem);
-
-        // Dodaj nową zbroję z aktualnym durability ustawionym na 100
-        ArmorManager.Instance.Add(armorItem);
-
-        // Powiadom HUD o zmianie zbroi
-        ArmorManager.Instance.NotifyArmorChanged(armorItem);
-
-        // Niszczymy obecną zbroję
-        Destroy(gameObject);
+        public ArmorItem GetArmorItem()
+        {
+            return new ArmorItem(armor);
+        }
     }
 }

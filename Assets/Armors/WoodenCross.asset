@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37a2edeb105478046ae24ed4ebf834b5, type: 3}
-  m_Name: Wooden_Cross
-  m_EditorClassIdentifier: 
-  id: 1
-  armorName: Wooden Cross
-  durability: 100
+  m_Script: {fileID: 0}
+  m_Name: WoodenCross
+  m_EditorClassIdentifier: Assembly-CSharp:TPS.Armor:Armor
+  armorName: Wooden cross
+  baseDurability: 100
   DMGResistance: 0.15
   icon: {fileID: 21300000, guid: 25f08444168f7b845a67482259e83d19, type: 3}

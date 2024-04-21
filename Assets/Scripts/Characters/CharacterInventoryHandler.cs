@@ -1,8 +1,9 @@
 using System.Collections.Generic;
-using TPS.Characters;
 using UnityEngine;
+using TPS.Armor;
 
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(CharacterArmorController))]
 public class CharacterInventoryHandler : MonoBehaviour
 {
     [Tooltip("The transform where the character's hand is located")]
@@ -20,6 +21,7 @@ public class CharacterInventoryHandler : MonoBehaviour
     private BaseInventoryItem[] inventoryItems;
     private int activeItemIndex = -1;
     private Collider2D characterCollider;
+    private CharacterArmorController armorController;
 
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class CharacterInventoryHandler : MonoBehaviour
         InitializeStartingItems();
 
         characterCollider = GetComponent<Collider2D>();
+        armorController = GetComponent<CharacterArmorController>();
     }
 
     private void Start()
@@ -133,7 +136,8 @@ public class CharacterInventoryHandler : MonoBehaviour
 
             if (collider.TryGetComponent(out ArmorPickup armorPickup))
             {
-                armorPickup.Pickup();
+                armorController.AddArmor(armorPickup.GetArmorItem());
+                Destroy(collider.gameObject);
             }
         }
     }

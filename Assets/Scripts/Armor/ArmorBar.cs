@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TPS.Characters;
+using TPS.Armor;
 
 namespace TPS.UI
 {
@@ -9,8 +9,9 @@ namespace TPS.UI
         [SerializeField] private GameObject entityToWatch;
         [SerializeField] private Slider slider;
         [SerializeField] private Image armorIcon;
+        [SerializeField] private Sprite nullArmorSprite;
 
-        private CharacterHealthHandler healthHandler;
+        private CharacterArmorController armorController;
 
         private void Awake()
         {
@@ -20,49 +21,31 @@ namespace TPS.UI
                 return;
             }
 
-            if (!entityToWatch.TryGetComponent(out healthHandler))
+            if (!entityToWatch.TryGetComponent(out armorController))
             {
-                Debug.LogError("ArmorBar: entityToWatch does not have a CharacterHealthHandler!");
+                Debug.LogError("ArmorBar: entityToWatch does not have CharacterArmorController component!");
                 return;
             }
 
-            healthHandler.OnArmorDurabilityChange.AddListener(UpdateArmorBar);
+            armorController.OnArmorDurabilityChange.AddListener(UpdateArmorBar);
+            armorController.OnArmorChange.AddListener(UpdateArmor);
         }
 
         private void OnDestroy()
         {
-            healthHandler.OnArmorDurabilityChange.RemoveListener(UpdateArmorBar);
+            armorController.OnArmorDurabilityChange.RemoveListener(UpdateArmorBar);
+            armorController.OnArmorChange.RemoveListener(UpdateArmor);
         }
 
         private void UpdateArmorBar(ArmorItem armorItem)
         {
-            slider.value = armorItem.durability;  // Aktualizujesz wartość dla aktualnie podnoszonego armoru
-
-            if (armorItem.durability <= 0)
-            {
-                DestroyArmor();
-            }
+            slider.value = armorItem == null ? 0 : armorItem.currentDurability / armorItem.armor.baseDurability * 100;
         }
 
-        private void DestroyArmor()
+        private void UpdateArmor(ArmorItem armorItem)
         {
-            ArmorItem lowestArmor = healthHandler.GetLowestIndexArmor();
-
-            if (lowestArmor != null)
-            {
-                // Usuń najniższy obiekt ArmorItem z ArmorManager
-                ArmorManager.Instance.RemoveArmor(lowestArmor);
-
-                // Aktualizuj ikonę armoru na nową wartość
-                ArmorItem newLowestArmor = healthHandler.GetLowestIndexArmor();
-                if (newLowestArmor != null && armorIcon != null)
-                {
-                    armorIcon.sprite = newLowestArmor.icon;
-                }
-            }
+            armorIcon.sprite = armorItem != null ? armorItem.armor.icon : nullArmorSprite;
+            UpdateArmorBar(armorItem);
         }
     }
 }
-
-
-

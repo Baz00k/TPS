@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,18 +5,16 @@ using UnityEngine.Events;
 namespace TPS.Characters
 {
     [RequireComponent(typeof(CharacterStatsHandler))]
+    [RequireComponent(typeof(CharacterArmorController))]
     public class CharacterHealthHandler : MonoBehaviour
     {
         [SerializeField] private UnityEvent<float> onHealthChange;
         [SerializeField] private UnityEvent onHeal;
         [SerializeField] private UnityEvent onDamage;
         [SerializeField] private UnityEvent onDeath;
-        [SerializeField] private UnityEvent<ArmorItem> onArmorDurabilityChange;
-        public UnityEvent<ArmorItem> OnArmorDurabilityChange => onArmorDurabilityChange;
-
-
 
         private CharacterStatsHandler statsHandler;
+        private CharacterArmorController armorController;
 
         public UnityEvent OnHeal => onHeal;
         public UnityEvent OnDamage => onDamage;
@@ -30,24 +27,13 @@ namespace TPS.Characters
         private void Awake()
         {
             statsHandler = GetComponent<CharacterStatsHandler>();
-            ArmorManager.Instance.OnArmorChanged += UpdateDamageResistance;
+            armorController = GetComponent<CharacterArmorController>();
         }
 
         private void Start()
         {
             CurrentHealth = statsHandler.CurrentStats.MaxHealth;
             onHealthChange.Invoke(CurrentHealth);
-        }
-
-        private void OnDestroy()
-        {
-            ArmorManager.Instance.OnArmorChanged -= UpdateDamageResistance;
-        }
-
-        private void UpdateDamageResistance(ArmorItem newArmor)
-        {
-            // Aktualizuj obrażenia w zależności od nowego armoru
-            // Tymczasowo pomiń, ponieważ będziemy aktualizować to przy każdym obrażeniu
         }
 
         public void ChangeHealth(float amount)
@@ -72,51 +58,23 @@ namespace TPS.Characters
 
         public void Damage(float amount)
         {
-            ArmorItem lowestArmor = GetLowestIndexArmor();
+            var currentArmor = armorController.CurrentArmor;
+            var damageAmount = amount;
 
-            if (lowestArmor != null)
+            if (currentArmor != null)
             {
-                lowestArmor.durability -= (int)amount;
-
-                if (lowestArmor.durability <= 0)
-                {
-                    lowestArmor.durability = 0;
-                }
-
-                OnArmorDurabilityChange.Invoke(lowestArmor);
-
-                float damage = amount * (1 - lowestArmor.DMGResistance);
-                CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, statsHandler.CurrentStats.MaxHealth);
-                onDamage.Invoke();
-                onHealthChange.Invoke(CurrentHealth);
-
-                if (CurrentHealth == 0)
-                {
-                    onDeath.Invoke();
-                }
-            }
-        }
-
-        public ArmorItem GetLowestIndexArmor()
-        {
-            if (ArmorManager.Instance.Armors.Count == 0)
-            {
-                return null;
+                armorController.DamageArmor(amount);
+                damageAmount = amount * (1 - currentArmor.armor.DMGResistance);
             }
 
-            int lowestIndex = 0;
-            ArmorItem lowestArmor = ArmorManager.Instance.Armors[lowestIndex];
+            CurrentHealth = Mathf.Clamp(CurrentHealth - damageAmount, 0, statsHandler.CurrentStats.MaxHealth);
+            onDamage.Invoke();
+            onHealthChange.Invoke(CurrentHealth);
 
-            for (int i = 1; i < ArmorManager.Instance.Armors.Count; i++)
+            if (CurrentHealth == 0)
             {
-                if (ArmorManager.Instance.Armors[i].id < lowestArmor.id)
-                {
-                    lowestArmor = ArmorManager.Instance.Armors[i];
-                    lowestIndex = i;
-                }
+                onDeath.Invoke();
             }
-
-            return lowestArmor;
         }
     }
 }
