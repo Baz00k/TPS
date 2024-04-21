@@ -9,16 +9,19 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 9174dd806983b6a4996fba7e41040366
   - enabled: 1
-    path: Assets/Scenes/1levelTileMap.unity
-    guid: d7ea25362d5ab384dba1af4bb34c1c9a
-  - enabled: 1
     path: Assets/Scenes/PlayerSystem.unity
     guid: f7251069571f843beb9f64824e37cb1f
+  - enabled: 1
+    path: Assets/Scenes/1levelTileMap.unity
+    guid: d7ea25362d5ab384dba1af4bb34c1c9a
   - enabled: 1
     path: Assets/Scenes/2levelTileMap.unity
     guid: 26183a4067b21a249bef9a85532af287
   - enabled: 1
     path: Assets/Scenes/DeathScreen.unity
     guid: b77a748408c7bc14ca17f6bda7e4fef1
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: ba7c1372fb026d44cbc3bbd36a298ef7
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8a76fea6c0ed34e82a1a22ba4de60fa3, type: 2}
