@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TPS.Characters;
 
-public class Extract : MonoBehaviour
+public class End : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,7 +14,6 @@ public class Extract : MonoBehaviour
 
     private void LoadSceneNumberThree()
     {
-        SceneManager.LoadScene(3);
-        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+        SceneManager.LoadScene(4);
     }
 }
