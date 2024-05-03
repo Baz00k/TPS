@@ -16,6 +16,7 @@ public class CharacterArmorController : MonoBehaviour
     private void Start()
     {
         OnArmorChange.Invoke(CurrentArmor);
+        OnArmorDurabilityChange.Invoke(CurrentArmor);
     }
 
     public void AddArmor(ArmorItem armor)
@@ -23,30 +24,30 @@ public class CharacterArmorController : MonoBehaviour
         armors.Add(armor);
         armors.Sort((a, b) => b.armor.DMGResistance.CompareTo(a.armor.DMGResistance));
 
-        OnArmorChange.Invoke(armor);
+        OnArmorChange.Invoke(CurrentArmor);
+        OnArmorDurabilityChange.Invoke(CurrentArmor);
+    }
+
+    public void DamageArmor(float amount)
+    {
+        if (CurrentArmor == null)
+        {
+            return;
+        }
+
+        CurrentArmor.currentDurability -= amount;
+        OnArmorDurabilityChange.Invoke(CurrentArmor);
+
+        if (CurrentArmor.currentDurability <= 0)
+        {
+            RemoveArmor(CurrentArmor);
+        }
     }
 
     public void RemoveArmor(ArmorItem armor)
     {
         armors.Remove(armor);
-        OnArmorChange.Invoke(armors.Count > 0 ? armors[0] : null);
+        OnArmorChange.Invoke(CurrentArmor);
+        OnArmorDurabilityChange.Invoke(CurrentArmor);
     }
-
-    public void DamageArmor(float amount)
-    {
-        if (armors.Count == 0)
-        {
-            return;
-        }
-
-        armors[0].currentDurability -= amount;
-        OnArmorDurabilityChange.Invoke(armors[0]);
-
-        if (armors[0].currentDurability <= 0)
-        {
-            RemoveArmor(armors[0]);
-        }
-    }
-
-
 }

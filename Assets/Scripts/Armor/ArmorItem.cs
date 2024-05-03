@@ -2,15 +2,6 @@ using UnityEngine;
 
 namespace TPS.Armor
 {
-    [CreateAssetMenu(fileName = "New Armor", menuName = "Items/Armor")]
-    public class Armor : ScriptableObject
-    {
-        public string armorName;
-        public int baseDurability;
-        public float DMGResistance;
-        public Sprite icon;
-    }
-
     public class ArmorItem
     {
         public Armor armor;
@@ -18,7 +9,12 @@ namespace TPS.Armor
 
         public ArmorItem(Armor armorStats)
         {
-            armor = armorStats;
+            armor = ScriptableObject.CreateInstance<Armor>();
+            armor.armorName = armorStats.armorName;
+            armor.baseDurability = armorStats.baseDurability;
+            armor.DMGResistance = armorStats.DMGResistance;
+            armor.icon = armorStats.icon;
+
             currentDurability = armorStats.baseDurability;
         }
     }
